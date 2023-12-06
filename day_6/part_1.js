@@ -6,9 +6,11 @@ const input = rawInput.split('\n');
 
 const times = [];
 const distances = [];
-for (let line of input) {
-  line = line.trim();
-  line = line.replace(/ +(?= )/g,'').split(' ');
+for (const ln of input) {
+  const line = ln
+    .trim()
+    .replace(/ +(?= )/g, '')
+    .split(' ');
 
   if (line[0].includes('Time:')) {
     times.push(...line.slice(1));
@@ -19,12 +21,12 @@ for (let line of input) {
 
 const getQuadraticFormula = (time, distance) => {
   const a = -1 * (-1 * time);
-  const b = Math.sqrt(Math.pow(-1 * time, 2) - (4 * 1 * distance));
+  const b = Math.sqrt(Math.pow(-1 * time, 2) - 4 * 1 * distance);
   const c = 2;
 
   // (a +- b) / c
   return [a, b, c];
-}
+};
 
 const numberOfWays = [];
 for (let i = 0; i < times.length; i++) {
@@ -47,7 +49,11 @@ for (let i = 0; i < times.length; i++) {
   }
 
   numberOfWays.push(maximumHold - minimumHold + 1);
-  console.log(`Race ${i + 1}, time=${time}, distance=${distance}:\t${minimumHold}, ${maximumHold}`);
+  console.log(
+    `Race ${
+      i + 1
+    }, time=${time}, distance=${distance}:\t${minimumHold}, ${maximumHold}`
+  );
 }
 
 let total = 0;
