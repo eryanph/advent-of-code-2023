@@ -9,9 +9,9 @@ for (const ln of input) {
   const line = ln
     .trim()
     .split(' ')
-    .map(i => Number(i));
+    .map((i) => Number(i));
 
-    histories.push([...line]);
+  histories.push([...line]);
 }
 
 const sequences = [];
@@ -27,7 +27,12 @@ for (let k = 0; k < histories.length; k++) {
       return b;
     }, null);
     sequences[k].push(newSequence);
-  } while(sequences[k][sequences[k].length - 1].reduce((a, b) => Math.abs(a) + Math.abs(b), 0) > 0); 
+  } while (
+    sequences[k][sequences[k].length - 1].reduce(
+      (a, b) => Math.abs(a) + Math.abs(b),
+      0
+    ) > 0
+  );
 }
 
 let total = 0;
@@ -42,7 +47,8 @@ for (const sequence of sequences) {
     return b;
   }, null);
 
-  total += sequence[sequence.length - 1][sequence[sequence.length - 1].length - 1];
+  total +=
+    sequence[sequence.length - 1][sequence[sequence.length - 1].length - 1];
 }
 
 console.log(`Sum of extrapolated values: ${total}`);
