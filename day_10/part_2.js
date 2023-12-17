@@ -14,7 +14,7 @@ for (const ln of input) {
     startingRow = maze.length;
     startingColumn = line.indexOf('S');
   }
-  maze.push([...line]);
+  maze.push(line);
 }
 
 const openings = {
